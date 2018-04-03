@@ -1,0 +1,64 @@
+:root {
+  --body-background: #171717;
+}
+
+body {
+  background: var(--body-background);
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  height: 80px;
+  position: absolute;
+  top: 26px;
+  left: 26px;
+  /* mix-blend-mode: difference; */
+  z-index: 10;
+}
+
+svg {
+  position: absolute;
+  left: 0; top: 0;
+  transform: translate3d(0, 0, 1px);
+  min-width: 100vw;  
+  min-height: 100vh;  
+}
+
+.animated-lines,
+.animated-lines-thick {
+  fill: none;
+  stroke: #fff;
+  stroke-width: .5px;
+  /* vector-effect: non-scaling-stroke; */
+}
+
+.animated-lines-thick {
+  stroke-width: 1px;
+}
+
+text {
+  fill: white;
+  fill: rgba(255, 255, 255, .85);
+  font-family: 'Montserrat-Black', 'Montserrat';
+  font-weight: 700;
+  font-size: 250;
+  position: absolute;
+}
+
+.letter {
+  fill: white;
+  fill: rgba(255, 255, 255, .85);
+}
+
+text:nth-child(2) {
+  transform: rotate(-8deg);
+  font-size: 220;
+}
+
+circle.mouse {
+  fill: rgba(255, 255, 255, .5);
+  r: 8px;
+  transition: transform 1.5s ease;
+}

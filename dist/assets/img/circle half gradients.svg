@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" className="circle">
+  <defs>
+    <linearGradient id="semicircle" x1="50%" x2="50%" y1="0%" y2="97.943%">
+      <stop offset="0%" stopOpacity=".05"/>
+      <stop offset="100%" stopOpacity=".25"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" fillRule="evenodd">
+    <circle cx="500" cy="500" r="500" fill="#CCCCCC"/>
+    <path fill="url(#semicircle)" d="M500,1000 C776.142375,1000 1000,776.142375 1000,500 C666.666667,500 500,500 500,500 C500,564 500,730.666667 500,1000 Z"/>
+    <path fill="url(#semicircle)" d="M1.41442413e-13,500 C276.142375,500 500,276.142375 500,-1.53477231e-12 C166.666667,-1.53477231e-12 1.13686838e-13,-1.53332241e-12 1.13686838e-13,-1.53042263e-12 C1.13686838e-13,64 1.22938696e-13,230.666667 1.41442413e-13,500 Z" transform="rotate(180 250 250)"/>
+  </g>
+</svg>

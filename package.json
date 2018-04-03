@@ -1,0 +1,17 @@
+{
+  "name": "brid.me",
+  "version": "1.0.0",
+  "description": "Brid creative agency website.",
+  "main": "script.js",
+  "scripts": {
+    "start": "npx live-server --port=1122 --watch=*"
+  },
+  "dependencies": {
+    "warpjs": "^1.0.8"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.0"
+  },
+  "author": "Nika Tomadze",
+  "license": "ISC"
+}
