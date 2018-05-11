@@ -38,19 +38,17 @@ svg {
   stroke-width: 1px;
 }
 
-text {
-  fill: white;
-  fill: rgba(255, 255, 255, .85);
-  font-family: 'Montserrat-Black', 'Montserrat';
-  font-weight: 700;
-  font-size: 250;
+.letter {
   position: absolute;
+  fill: #999;
+  /* fill: rgba(255, 255, 255, .85); */
+  height: 380px;
 }
 
-.letter {
-  fill: white;
-  fill: rgba(255, 255, 255, .85);
-}
+.letter.b { transform: translate(10px, 20px) }
+.letter.r { transform: translate(140px, 110px) }
+.letter.i { transform: translate(280px, 0px) }
+.letter.d { transform: translate(340px, 70px) }
 
 text:nth-child(2) {
   transform: rotate(-8deg);

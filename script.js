@@ -3,7 +3,7 @@ import settings from './settings.js'
 import { randomXPoints, createArray } from './helpers.js'
 import { log, putCircle } from './development.js'
 
-const PATH = document.querySelector('.animated-lines')
+const PATH = document.querySelector('.animated-lines-thick')
 
 let timer = settings.TIMER_INCREASE
 let randomXPointsArray = randomXPoints(settings.POINTS_AMOUNT)
@@ -13,7 +13,7 @@ const PATHS_ARRAY = () => {
     let currentDistance = settings.viewportLineDistance * key - settings.Y_AMPLITUDE
 
     var randomAngle = (Math.random() - .5) * 3
-    
+
     var pointsArray = randomXPointsArray.map((value, pointKey) => {
       var randomSin = -Math.sin(pointKey ^ 1) >= .5 ? 'sin' : 'cos'
       
@@ -41,59 +41,71 @@ const PATHS_ARRAY = () => {
   })
 }
 
-const TEXTS = document.querySelectorAll('mask text')
-const TEXTS_PROPERTIES = createArray(TEXTS.length)
-const TEXTS_ROTATION = () => {
-  TEXTS_PROPERTIES.map((value, key) => {
-    value = TEXTS[key]
 
-    let x = Math.sin(timer * (key ^ 1)) * 25
-    let y = Math.cos(timer * (key ^ 1)) * 25
+const LETTERS = document.querySelectorAll('mask .letter')
+const LETTERS_PROPERTIES = createArray(LETTERS.length)
+
+let lettersInitPos = []
+LETTERS_PROPERTIES.map((DOMObj, key) => {
+  DOMObj = LETTERS[key]
+  let initialX = parseInt(DOMObj.getAttribute('x'))
+  let initialY = parseInt(DOMObj.getAttribute('y'))
+  lettersInitPos[key] = [initialX, initialY]
+})
+
+console.log(lettersInitPos)
+const LETTERS_ROTATION = () => {
+  LETTERS_PROPERTIES.map((DOMObj, key) => {
+    DOMObj = LETTERS[key]
+
+    let x = lettersInitPos[key][0] + Math.sin(timer * (key ^ 1)) * 25
+    let y = lettersInitPos[key][1] + Math.cos(timer * (key ^ 1)) * 25
     let rotate = Math.sin(timer * key / 10) * 10
 
     let transformTranslate = `translate3d(${x}px, ${y}px, 1px)`
     let transformRotate = `rotate(${rotate}deg)`
     let transform = `${transformTranslate} ${transformRotate}`
-    
-    value.setAttribute('style', `transform: ${transform}`)
+
+    DOMObj.setAttribute('style', `transform: ${transform}`)
   })
 }
 
-const PATH2 = document.querySelector('.animated-lines-thick')
+const PATH2 = document.querySelector('.animated-lines')
 function update () {
   timer += settings.TIMER_INCREASE
   let joinedPath = PATHS_ARRAY().join(' ')
   PATH.setAttribute('d', joinedPath)
-  PATH2.setAttribute('d', joinedPath)
-  TEXTS_ROTATION()
+  // PATH2.setAttribute('d', joinedPath)
+  LETTERS_ROTATION()
   window.requestAnimationFrame(update)
-} update()
+} 
+update()
 
-const MOUSE_CONTAINER = document.querySelector('.mouse-container')
-document.addEventListener('mousemove', (e) => {
-  let { x, y } = e
-  let mouseCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
-  mouseCircle.classList.add('mouse')
+// const MOUSE_CONTAINER = document.querySelector('.mouse-container')
+// document.addEventListener('mousemove', (e) => {
+//   let { x, y } = e
+//   let mouseCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
+//   mouseCircle.classList.add('mouse')
 
-  x =  x / settings.windowWidth * settings.VIEWPORT_WIDTH - 7
-  y =  y / settings.windowHeight * settings.VIEWPORT_HEIGHT - 7
+//   x =  x / settings.windowWidth * settings.VIEWPORT_WIDTH - 7
+//   y =  y / settings.windowHeight * settings.VIEWPORT_HEIGHT - 7
 
-  let translate = `translate3d(${parseInt(x)}px, ${parseInt(y)}px, 1px)`
-  let transform = `transform: ${translate}`
+//   let translate = `translate3d(${parseInt(x)}px, ${parseInt(y)}px, 1px)`
+//   let transform = `transform: ${translate}`
   
-  mouseCircle.setAttribute('style', transform)
-  MOUSE_CONTAINER.appendChild(mouseCircle)
+//   mouseCircle.setAttribute('style', transform)
+//   MOUSE_CONTAINER.appendChild(mouseCircle)
 
   
-  let t = window.setTimeout(() => {
-    mouseCircle.setAttribute('style', transform + ' scale(0)')
+//   let t = window.setTimeout(() => {
+//     mouseCircle.setAttribute('style', transform + ' scale(0)')
     
-    t = window.setTimeout(() => {
-      mouseCircle.remove()
-      window.clearTimeout(t)
-    }, 2000)
-  })
-})
+//     t = window.setTimeout(() => {
+//       mouseCircle.remove()
+//       window.clearTimeout(t)
+//     }, 2000)
+//   })
+// })
 
 // const MOUSE_CIRCLE = document.querySelector('.mouse')
 // document.addEventListener('mousemove', (e) => {
