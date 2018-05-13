@@ -60,3 +60,14 @@ circle.mouse {
   r: 8px;
   transition: transform 1.5s ease;
 }
+
+nav.social {
+  position: absolute;
+  left: -56px;
+  bottom: 116px;
+  transform: rotate(-90deg);
+}
+
+nav.social a {
+  color: white;
+}
