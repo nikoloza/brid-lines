@@ -11,7 +11,7 @@ window.addEventListener('resize', (e) => {
 const VIEWPORT_WIDTH = 480
 const VIEWPORT_HEIGHT = 320
 
-const LINES_DISTANCE = 26
+const LINES_DISTANCE = 20
 let linesAmount = Math.floor(windowHeight / LINES_DISTANCE)
 let viewportLineDistance = VIEWPORT_HEIGHT / linesAmount
 
@@ -22,7 +22,7 @@ const Y_AMPLITUDE = 20
 let xDiapason = VIEWPORT_WIDTH / POINTS_AMOUNT
 let xAmplitude = xDiapason / 3
 
-const TIMER_INCREASE = 0.01
+const TIMER_INCREASE = 0.009
 
 export default {
   windowWidth,

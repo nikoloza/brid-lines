@@ -7,6 +7,7 @@ body {
   overflow: hidden;
   margin: 0;
   padding: 0;
+  font-family: Helvetica;
 }
 
 .logo {
@@ -26,29 +27,25 @@ svg {
   min-height: 100vh;  
 }
 
-.animated-lines,
-.animated-lines-thick {
+.animated-lines {
   fill: none;
   stroke: #fff;
   stroke-width: .5px;
   /* vector-effect: non-scaling-stroke; */
-}
-
-.animated-lines-thick {
-  stroke-width: 1px;
+  stroke-width: .85px;
 }
 
 .letter {
   position: absolute;
   fill: #999;
   /* fill: rgba(255, 255, 255, .85); */
-  height: 380px;
+  /* height: 400px; */
 }
 
-.letter.b { transform: translate(10px, 20px) }
+/* .letter.b { transform: translate(10px, 20px) }
 .letter.r { transform: translate(140px, 110px) }
 .letter.i { transform: translate(280px, 0px) }
-.letter.d { transform: translate(340px, 70px) }
+.letter.d { transform: translate(340px, 70px) } */
 
 text:nth-child(2) {
   transform: rotate(-8deg);
@@ -63,11 +60,16 @@ circle.mouse {
 
 nav.social {
   position: absolute;
-  left: -56px;
-  bottom: 116px;
+  left: 32px;
+  bottom: 22px;
   transform: rotate(-90deg);
+  transform-origin: 0 0;
+  font-size: .85em;
+  opacity: .85;
 }
 
 nav.social a {
   color: white;
+  text-decoration: none;
+  margin-right: 1.6em;
 }

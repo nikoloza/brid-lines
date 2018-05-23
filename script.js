@@ -3,7 +3,7 @@ import settings from './settings.js'
 import { randomXPoints, createArray } from './helpers.js'
 import { log, putCircle } from './development.js'
 
-const PATH = document.querySelector('.animated-lines-thick')
+const PATH = document.querySelector('.animated-lines')
 
 let timer = settings.TIMER_INCREASE
 let randomXPointsArray = randomXPoints(settings.POINTS_AMOUNT)
@@ -45,21 +45,12 @@ const PATHS_ARRAY = () => {
 const LETTERS = document.querySelectorAll('mask .letter')
 const LETTERS_PROPERTIES = createArray(LETTERS.length)
 
-let lettersInitPos = []
-LETTERS_PROPERTIES.map((DOMObj, key) => {
-  DOMObj = LETTERS[key]
-  let initialX = parseInt(DOMObj.getAttribute('x'))
-  let initialY = parseInt(DOMObj.getAttribute('y'))
-  lettersInitPos[key] = [initialX, initialY]
-})
-
-console.log(lettersInitPos)
 const LETTERS_ROTATION = () => {
   LETTERS_PROPERTIES.map((DOMObj, key) => {
     DOMObj = LETTERS[key]
 
-    let x = lettersInitPos[key][0] + Math.sin(timer * (key ^ 1)) * 25
-    let y = lettersInitPos[key][1] + Math.cos(timer * (key ^ 1)) * 25
+    let x = Math.sin(timer * (key ^ 1)) * 25
+    let y = Math.cos(timer * (key ^ 1)) * 25
     let rotate = Math.sin(timer * key / 10) * 10
 
     let transformTranslate = `translate3d(${x}px, ${y}px, 1px)`
@@ -70,7 +61,6 @@ const LETTERS_ROTATION = () => {
   })
 }
 
-const PATH2 = document.querySelector('.animated-lines')
 function update () {
   timer += settings.TIMER_INCREASE
   let joinedPath = PATHS_ARRAY().join(' ')
