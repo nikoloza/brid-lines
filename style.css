@@ -7,7 +7,8 @@ body {
   overflow: hidden;
   margin: 0;
   padding: 0;
-  font-family: Helvetica;
+  font-family: "Helvetica Neue";
+  user-select: none;
 }
 
 .logo {
@@ -27,49 +28,92 @@ svg {
   min-height: 100vh;  
 }
 
-.animated-lines {
+.lines {
   fill: none;
-  stroke: #fff;
-  stroke-width: .5px;
+  stroke: #444;
+  /* stroke-width: .5px; */
   /* vector-effect: non-scaling-stroke; */
-  stroke-width: .85px;
+  stroke-width: .9px;
 }
 
 .letter {
   position: absolute;
   fill: #999;
   /* fill: rgba(255, 255, 255, .85); */
-  /* height: 400px; */
 }
 
-/* .letter.b { transform: translate(10px, 20px) }
-.letter.r { transform: translate(140px, 110px) }
-.letter.i { transform: translate(280px, 0px) }
-.letter.d { transform: translate(340px, 70px) } */
-
-text:nth-child(2) {
-  transform: rotate(-8deg);
-  font-size: 220;
+.mouse {
+  fill: #999;
+  mix-blend-mode: difference;
 }
 
-circle.mouse {
-  fill: rgba(255, 255, 255, .5);
-  r: 8px;
-  transition: transform 1.5s ease;
+.headline {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 80%;
+  transform: translate3d(-50%, -100%, 1px);
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .35em;
+
+  z-index: 10;
+  /* mix-blend-mode: difference; */
+}
+
+.headline h1 {
+  font-size: 48px;
+  margin: 0 0 .5em;
+  line-height: 1;
+  font-weight: 500;
+}
+
+.headline h6 {
+  font-size: 18px;
+  margin: 0;
+  line-height: 1;
+  font-weight: 500;
+  opacity: .5;
 }
 
 nav.social {
   position: absolute;
-  left: 32px;
+  left: 36px;
   bottom: 22px;
   transform: rotate(-90deg);
   transform-origin: 0 0;
-  font-size: .85em;
-  opacity: .85;
+  font-size: .9em;
 }
 
 nav.social a {
-  color: white;
+  color: #999;
+  font-weight: 500;
   text-decoration: none;
   margin-right: 1.6em;
+  position: relative;
+  transition: 350ms ease color;
+}
+
+nav.social a:hover {
+  color: #fff;
+}
+
+nav.social a:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 111%;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: 350ms ease width;
+}
+
+nav.social a:hover:before {
+  width: 100%;
+}
+
+.hide {
+  opacity: 0;
 }

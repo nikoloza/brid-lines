@@ -3,7 +3,7 @@ import settings from './settings.js'
 import { randomXPoints, createArray } from './helpers.js'
 import { log, putCircle } from './development.js'
 
-const PATH = document.querySelector('.animated-lines')
+const PATH = document.querySelector('.lines')
 
 let timer = settings.TIMER_INCREASE
 let randomXPointsArray = randomXPoints(settings.POINTS_AMOUNT)
@@ -41,8 +41,7 @@ const PATHS_ARRAY = () => {
   })
 }
 
-
-const LETTERS = document.querySelectorAll('mask .letter')
+const LETTERS = document.querySelectorAll('.letter')
 const LETTERS_PROPERTIES = createArray(LETTERS.length)
 
 const LETTERS_ROTATION = () => {
@@ -51,11 +50,16 @@ const LETTERS_ROTATION = () => {
 
     let x = Math.sin(timer * (key ^ 1)) * 25
     let y = Math.cos(timer * (key ^ 1)) * 25
-    let rotate = Math.sin(timer * key / 10) * 10
-
     let transformTranslate = `translate3d(${x}px, ${y}px, 1px)`
+
+    let rotate = Math.sin(timer * key / 10) * 10
     let transformRotate = `rotate(${rotate}deg)`
-    let transform = `${transformTranslate} ${transformRotate}`
+    
+    let scale = Math.sin(timer)
+    // let transformScale = `scale(${scale})`
+    let transformScale = `scale(1)`
+    
+    let transform = `${transformTranslate} ${transformRotate} ${transformScale}`
 
     DOMObj.setAttribute('style', `transform: ${transform}`)
   })
@@ -71,40 +75,14 @@ function update () {
 } 
 update()
 
-// const MOUSE_CONTAINER = document.querySelector('.mouse-container')
-// document.addEventListener('mousemove', (e) => {
-//   let { x, y } = e
-//   let mouseCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
-//   mouseCircle.classList.add('mouse')
+const MOUSE_CIRCLE = document.querySelector('.xmouse')
+document.addEventListener('mousemove', (e) => {
+  let { x, y } = e
 
-//   x =  x / settings.windowWidth * settings.VIEWPORT_WIDTH - 7
-//   y =  y / settings.windowHeight * settings.VIEWPORT_HEIGHT - 7
+  x =  x / settings.windowWidth * settings.VIEWPORT_WIDTH - 21
+  y =  y / settings.windowHeight * settings.VIEWPORT_HEIGHT - 21
 
-//   let translate = `translate3d(${parseInt(x)}px, ${parseInt(y)}px, 1px)`
-//   let transform = `transform: ${translate}`
-  
-//   mouseCircle.setAttribute('style', transform)
-//   MOUSE_CONTAINER.appendChild(mouseCircle)
-
-  
-//   let t = window.setTimeout(() => {
-//     mouseCircle.setAttribute('style', transform + ' scale(0)')
-    
-//     t = window.setTimeout(() => {
-//       mouseCircle.remove()
-//       window.clearTimeout(t)
-//     }, 2000)
-//   })
-// })
-
-// const MOUSE_CIRCLE = document.querySelector('.mouse')
-// document.addEventListener('mousemove', (e) => {
-//   let { x, y } = e
-
-//   x =  x / settings.windowWidth * settings.VIEWPORT_WIDTH - 26
-//   y =  y / settings.windowHeight * settings.VIEWPORT_HEIGHT - 26
-
-//   let translate = `translate3d(${x}px, ${y}px, 1px)`
-//   let transform = `transform: ${translate}`
-//   MOUSE_CIRCLE.setAttribute('style', transform)
-// })
+  let translate = `translate3d(${x}px, ${y}px, 1px)`
+  let transform = `transform: ${translate}`
+  MOUSE_CIRCLE.setAttribute('style', transform)
+})

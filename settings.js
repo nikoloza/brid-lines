@@ -15,14 +15,14 @@ const LINES_DISTANCE = 20
 let linesAmount = Math.floor(windowHeight / LINES_DISTANCE)
 let viewportLineDistance = VIEWPORT_HEIGHT / linesAmount
 
-const POINTS_MIN_DISTANCE = 320
+const POINTS_MIN_DISTANCE = 380
 const POINTS_AMOUNT = Math.floor(windowWidth / POINTS_MIN_DISTANCE)
 const Y_AMPLITUDE = 20
 
 let xDiapason = VIEWPORT_WIDTH / POINTS_AMOUNT
 let xAmplitude = xDiapason / 3
 
-const TIMER_INCREASE = 0.009
+const TIMER_INCREASE = 0.0085
 
 export default {
   windowWidth,
