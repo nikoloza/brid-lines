@@ -1,6 +1,8 @@
 <link rel="stylesheet" href="style.css">
 
-<header>
+<span class="loader animated"></span>
+
+<header class="header animated hide">
   <img class="logo" src="img/logo.svg" alt="">
 </header>
 
@@ -25,26 +27,26 @@
   </defs>
   
   <mask id="mask-letters">
-    <g filter="url(#blur)" class="xhide">
+    <g filter="url(#blur)" class="letters hide">
       <use class="letter b" x="10" y="20" xlink:href="letters.svg#letter-b"></use>
       <use class="letter r" x="140" y="110" xlink:href="letters.svg#letter-r"></use>
       <use class="letter i" x="280" y="0" xlink:href="letters.svg#letter-i"></use>
       <use class="letter d" x="340" y="70" xlink:href="letters.svg#letter-d"></use>
     </g>
-    <circle filter="url(#blur-path)" class="hide mouse" r="48"></circle>
+    <rect class="loader-mask animated" width="480" height="320"></rect>
   </mask>
 
   <!-- <path id="lines" class="lines"></path> -->
   <path id="lines" class="lines" mask="url(#mask-letters)"></path>
 </svg>
 
-<nav class="social xhide">
+<nav class="social animated hide">
   <a href="#facebook">Facebook</a>
   <a href="#facebook">Instagram</a>
   <a href="#facebook">Behance</a>
 </nav>
 
-<section class="headline xhide">
+<section class="headline animated hide">
   <h1>Create your brand ID</h1>
   <h6>Your branding company</h6>
 </section>

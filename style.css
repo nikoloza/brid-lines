@@ -11,6 +11,21 @@ body {
   user-select: none;
 }
 
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 80%;
+  transform: translate3d(-50%, -50%, 1px);
+  color: #333;
+  text-align: center;
+  text-transform: uppercase;
+  z-index: 25;
+  mix-blend-mode: difference;
+  letter-spacing: .15em;
+  font-size: 38px;
+}
+
 .logo {
   height: 80px;
   position: absolute;
@@ -45,6 +60,11 @@ svg {
 .mouse {
   fill: #999;
   mix-blend-mode: difference;
+}
+
+.loader-mask {
+  fill: #999;
+  transition: 1250ms ease opacity;
 }
 
 .headline {
@@ -116,4 +136,8 @@ nav.social a:hover:before {
 
 .hide {
   opacity: 0;
+}
+
+.animated {
+  transition: .65s ease opacity;
 }

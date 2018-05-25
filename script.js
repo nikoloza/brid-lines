@@ -1,9 +1,10 @@
 'use strict'
 import settings from './settings.js'
+import { loading, init } from './loading.js'
 import { randomXPoints, createArray } from './helpers.js'
 import { log, putCircle } from './development.js'
 
-const PATH = document.querySelector('.lines')
+const $path = document.querySelector('.lines')
 
 let timer = settings.TIMER_INCREASE
 let randomXPointsArray = randomXPoints(settings.POINTS_AMOUNT)
@@ -68,21 +69,11 @@ const LETTERS_ROTATION = () => {
 function update () {
   timer += settings.TIMER_INCREASE
   let joinedPath = PATHS_ARRAY().join(' ')
-  PATH.setAttribute('d', joinedPath)
+  $path.setAttribute('d', joinedPath)
   // PATH2.setAttribute('d', joinedPath)
   LETTERS_ROTATION()
   window.requestAnimationFrame(update)
-} 
+}
+
 update()
-
-const MOUSE_CIRCLE = document.querySelector('.xmouse')
-document.addEventListener('mousemove', (e) => {
-  let { x, y } = e
-
-  x =  x / settings.windowWidth * settings.VIEWPORT_WIDTH - 21
-  y =  y / settings.windowHeight * settings.VIEWPORT_HEIGHT - 21
-
-  let translate = `translate3d(${x}px, ${y}px, 1px)`
-  let transform = `transform: ${translate}`
-  MOUSE_CIRCLE.setAttribute('style', transform)
-})
+loading(init)
