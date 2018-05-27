@@ -6,7 +6,8 @@ const $loaderMask = document.querySelector('.loader-mask')
 let counter = 0
 
 function loading (callback) {
-  counter += Math.pow(2,2)//Math.random(), Math.random())
+  counter += Math.pow(2,2)
+  counter = counter > 100 ? 100 : counter
   $loader.innerHTML = `${parseInt(counter)}%`
   
   let translate = `translate3d(${counter - 100}%, 0, 1px)`
