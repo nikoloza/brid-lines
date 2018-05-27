@@ -9,11 +9,11 @@ function loading (callback) {
   counter += Math.pow(2,2)
   counter = counter > 100 ? 100 : counter
   $loader.innerHTML = `${parseInt(counter)}%`
-  
+
   let translate = `translate3d(${counter - 100}%, 0, 1px)`
   $loaderMask.setAttribute('style', `transform: ${translate}`)
-  
-  if (counter > 100) return callback()
+
+  if (counter === 100) return callback()
 
   window.requestAnimationFrame(() => loading(callback))
 }
