@@ -23,6 +23,7 @@ const $header = document.querySelector('.header')
 const $headline = document.querySelector('.headline')
 const $social = document.querySelector('.social')
 const $letters = document.querySelector('.letters')
+const $scroll = document.querySelector('.scroll')
 
 function init () {
   $loader.classList.add('hide')
@@ -41,6 +42,7 @@ function init () {
     $header.classList.remove('hide')
     $headline.classList.remove('hide')
     $social.classList.remove('hide')
+    $scroll.classList.remove('hide')
     window.clearTimeout(t3)
   }, 2550)
 }
